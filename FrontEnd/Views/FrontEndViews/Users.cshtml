@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+}
+
+<!-- Users page partial view -->
+
+<slide-toggle on-label="Active" off-label="Inactive" ng-model="slideToggleActiveInactve"><slide-toggle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            @*Sidebar content*@
+            Search:
+        <input ng-model="filterText.userName">@* @@@ on change, clear selected user *@
+        </div>
+    </div>
+    <div class="row">
+        @*Body content*@
+        <ul class="col-md-4 list-group">
+            <a ng-repeat="user in users | filter:filterText | orderBy:'userName'" ng-class="{'list-group-item': true, active: user==selectedUser} " ng-click="selectUser(user)">
+                <p>{{user.userName}}</p>
+            </a>
+        </ul>
+        <div class="col-md-8" ng-show="selectedUser != undefined">
+            <div class="input-group">
+                <span class="input-group-addon">Username</span>
+                <input type="text" class="form-control" placeholder="Username" ng-model="selectedUser.userName">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Email</span>
+                <input type="text" class="form-control" placeholder="Email" ng-model="selectedUser.email">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">Is active
+                <input type="checkbox" ng-model="selectedUser.isActive">
+                </span>
+            </div>
+            @*<div class="input-group">*@
+                <slide-toggle on-label="Active" off-label="Inactive" ng-model="selectedUser.isActive"><slide-toggle>
+            @*</div>*@
+            <div class="input-group">
+                <span class="input-group-addon">Is deleted
+                <input type="checkbox" ng-model="selectedUser.isDeleted">
+                </span>
+            </div>
+            <span>Working days</span>
+            @*<work-Days value="selectedUser"></work-Days>*@
+            <input type="checkbox" ng-model="selectedUser.workDaysArray[0]">
+            <input type="checkbox" ng-model="selectedUser.workDaysArray[1]">
+            <input type="checkbox" ng-model="selectedUser.workDaysArray[2]">
+            <input type="checkbox" ng-model="selectedUser.workDaysArray[3]">
+            <input type="checkbox" ng-model="selectedUser.workDaysArray[4]">
+            <input type="checkbox" ng-model="selectedUser.workDaysArray[5]">
+            <input type="checkbox" ng-model="selectedUser.workDaysArray[6]">
+            <div>
+                <div class="input-group">
+                    <span>Can work from</span>
+                    <div ng-model="selectedUser.workHourFromDate">
+                        <timepicker minute-step="15" show-meridian="false"></timepicker>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <span>to</span>
+                    <div ng-model="selectedUser.workHourToDate">
+                        <timepicker minute-step="15" show-meridian="false"></timepicker>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon">Restrict to office
+                <input type="checkbox" ng-model="selectedUser.restrictAccessByIP">
+                </span>
+            </div>
+        </div>
+      
+        @* @@@ show the roles per user *@
+        <p>Roles</p>
+        <ul>
+            <li data-ng-repeat="role in roles | orderBy:roleName">{{role.roleId}}: {{role.roleName}}
+            </li>
+        </ul>
+
+        <button ng-click="endEdit(selectedUser)">Save</button>
+    </div>
+</div>

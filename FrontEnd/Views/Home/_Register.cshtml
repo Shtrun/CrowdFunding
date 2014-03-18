@@ -1,0 +1,54 @@
+﻿@model CrowdFunding.Models.RegisterModel
+
+@using (Html.BeginForm("JsonRegister", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { Id = "registerForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>Registration Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new { id = "registerName" })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)
+            </li>
+
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+            
+            <li>
+                @Html.LabelFor(m => m.WorkDays)
+                @Html.TextBoxFor(m => m.WorkDays)
+            </li>
+
+            <li>
+                @Html.LabelFor(m => m.WorkHourFrom)
+                @Html.TextBoxFor(m => m.WorkHourFrom)
+            </li>
+
+            <li>
+                @Html.LabelFor(m => m.WorkHourTo)
+                @Html.TextBoxFor(m => m.WorkHourTo)
+            </li>
+
+            <li>
+                @Html.LabelFor(m => m.RestrictAccessByIP)
+                @Html.CheckBoxFor(m => m.RestrictAccessByIP)
+            </li>
+
+            <li>
+                <input type="submit" value="Sign up" />
+            </li>
+        </ol>
+        @Html.ValidationSummary()
+    </fieldset>
+}

@@ -1,0 +1,52 @@
+﻿<loggingConfiguration name="" tracingEnabled="true" defaultCategory="General">
+  <listeners>
+    <add name="RollingFlatFile_NormalLog" type="Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners.RollingFlatFileTraceListener, Microsoft.Practices.EnterpriseLibrary.Logging"
+              listenerDataType="Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.RollingFlatFileTraceListenerData, Microsoft.Practices.EnterpriseLibrary.Logging"
+              fileName="F:\Temp\Logs\CrowdFundingFrontEnd\FrontEndLog.txt" footer=""
+              formatter="Text Formatter" header="" rollInterval="Day" rollSizeKB="1000"
+              traceOutputOptions="Timestamp" />
+
+    <!--<add name="RollingFlatFile_GUIErrorsLog"  type="Microsoft.Practices.EnterpriseLibrary.Logging.TraceListeners.RollingFlatFileTraceListener, Microsoft.Practices.EnterpriseLibrary.Logging"
+      listenerDataType="Microsoft.Practices.EnterpriseLibrary.Logging.Configuration.RollingFlatFileTraceListenerData, Microsoft.Practices.EnterpriseLibrary.Logging"
+      fileName="D:\Temp\Logs\BAM\GUIErrorsExe.txt" footer=""
+      formatter="Text Formatter" header="" rollInterval="Day" rollSizeKB="1000"
+      traceOutputOptions="Timestamp" />-->
+
+  </listeners>
+  <formatters>
+    <add type="Microsoft.Practices.EnterpriseLibrary.Logging.Formatters.TextFormatter, Microsoft.Practices.EnterpriseLibrary.Logging"
+      template="{timestamp(local)} {severity}, Message: {message}"
+      name="Text Formatter" />
+    <add type="Microsoft.Practices.EnterpriseLibrary.Logging.Formatters.TextFormatter, Microsoft.Practices.EnterpriseLibrary.Logging"
+      template="{timestamp(local)}, Message: {message}&#xA;" name="Trace" />
+  </formatters>
+  <categorySources>
+    <add switchValue="All" name="General">
+      <listeners>
+        <add name="RollingFlatFile_NormalLog" />
+      </listeners>
+    </add>
+    <!--<add switchValue ="All" name="GUI">
+      <listeners>
+        <add name ="RollingFlatFile_GUIErrorsLog" />
+      </listeners>
+    </add>-->
+  </categorySources>
+  <specialSources>
+    <allEvents switchValue="All" name="All Events">
+      <listeners>
+        <add name="RollingFlatFile_NormalLog" />
+      </listeners>
+    </allEvents>
+    <notProcessed switchValue="All" name="Unprocessed Category">
+      <listeners>
+        <add name="RollingFlatFile_NormalLog" />
+      </listeners>
+    </notProcessed>
+    <errors switchValue="All" name="Logging Errors &amp; Warnings">
+      <listeners>
+        <add name="RollingFlatFile_NormalLog" />
+      </listeners>
+    </errors>
+  </specialSources>
+</loggingConfiguration>

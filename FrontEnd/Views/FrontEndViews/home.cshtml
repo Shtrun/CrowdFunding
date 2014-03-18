@@ -1,0 +1,45 @@
+﻿<div ng-controller="HomePageCtrl as vm">
+    <div class="container">
+        <span class="col-md-2 col-md-offset-3">Statistics</span>
+        <div class="col-md-2">
+            <span class="glyphicon glyphicon-user">Investors  </span><span class="badge">{{vm.investorsCount}}</span>
+        </div>
+        <div class="col-md-2">
+            <span class="glyphicon glyphicon-briefcase">Companies  </span><span class="badge">{{vm.companiesCount}}</span>
+        </div>
+    </div>
+
+    <div class="jumbotron">
+        <h1>Jumbotron heading</h1>
+        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+        <video ng-src="{{vm.videoUrl}}" controls style="height: 200px; width: 80%;"></video>
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+            <h4>New company</h4>
+        </div>
+
+        <div class="col-lg-6">
+            <h4>New investor</h4>
+        </div>
+    </div>
+
+    <div class="row">
+        <h5>Companies</h5>
+        <ul class="nav navbar-nav">
+            <li data-ng-repeat="item in vm.companiesCategories" ng-class="{active: item.active}">
+                <a href="#">{{item.name}}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <ul class="nav navbar-nav">
+            <li data-ng-repeat="item in vm.accelerators">
+                <a href="#">{{item}}</a>
+            </li>
+        </ul>
+    </div>
+</div>

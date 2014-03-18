@@ -1,0 +1,22 @@
+﻿<div ng-controller="CompaniesPageCtrl as vm">
+    <div class="jumbotron">
+        <div class="row">
+            <h5>Filters</h5>
+            <ul class="nav navbar-nav">
+                <li data-ng-repeat="item in vm.companiesCategories" ng-class="{active: item.active}">
+                    <a href="#">{{vm.item.name}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row col-md-offset-1">
+                <div data-ng-repeat="item in vm.companies" class="col-md-4">
+                    <a href="#/company/{{item.id}}">
+                        <img src="" ng-src="{{item.logo}}" />
+                        <h3>{{item.name}}</h3>
+                        <span>{{item.description}}</span>       <!--    {{item.raised}} of {{item.goal}}        {{item.status}}-->
+                    </a>
+                </div>
+        </div>
+    </div>
+</div>

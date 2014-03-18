@@ -1,0 +1,29 @@
+﻿
+<div data-ng-controller="shell as vm">
+    <div data-ng-show="vm.isBusy" class="page-splash dissolve-animation">
+        <div data-cc-spinner="vm.spinnerOptions"></div>
+        <div class="page-splash-message page-splash-message-subtle">{{vm.busyMessage}}</div>
+    </div>
+
+    <header class="container">
+        
+     <!--   <div id="menu" class="navbar navbar-default">-->
+           <div id="menu" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="navbar-header">
+                <button class="btn btn-success navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                <img src="http://www.futbol24.com/upload/team/Argentina/Boca-Juniors.png" alt="logo" style="height: 80px;" />
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="nav" ng-class="{ active: vm.isActive('/') }"><a href="#">Home</a></li>
+                    <li class="nav" ng-class="{ active: vm.isActive('/companies') }"><a href="#/companies">Companies</a></li>
+                    <li class="nav" ng-class="{ active: vm.isActive('/contact') }"><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div data-ng-view class="shuffle-animation"></div>
+    <!-- The SPA Views go here -->
+</div>
+<!-- /container -->

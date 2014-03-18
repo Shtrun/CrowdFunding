@@ -1,0 +1,11 @@
+Cuando se usa Self-signed certificate, para evitar el warning del browser, ver cual deberia ser el nombre que aparece (el error dice "usas localhost" en vez de <COMPUTERNAME>". Agregar ese nombre al 
+	hosts, con 127.0.0.1, y usar, por ejemplo: https://damil2014:444/
+
+alter table userprofile add 
+	Email nvarchar(200) not null,
+	IsActive bit not null,
+	IsDeleted bit not null,
+	WorkDays int not null,
+	WorkHourFrom char(5) not null,
+	WorkHourTo char(5) not null,
+	RestrictAccessByIP bit not null
